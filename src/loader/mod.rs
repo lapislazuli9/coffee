@@ -126,6 +126,10 @@ impl<'a> Coffee<'a> {
     // Allocate memory for the bof
     self.allocate_bof_memory()?;
 
+    // Reset the output data before use
+    let output_data = beacon_get_output_data();
+    output_data.reset();
+
     // Execute the bof
     self.execute_bof(arguments, argument_size, entrypoint_name)?;
 
@@ -138,9 +142,6 @@ impl<'a> Coffee<'a> {
     } else {
         String::new()
     };
-
-    // Reset the output data
-    output_data.reset();
 
     // Free the memory of all sections
     self.free_bof_memory()?;
