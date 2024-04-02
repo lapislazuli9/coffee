@@ -130,7 +130,7 @@ impl<'a> Coffee<'a> {
     self.execute_bof(arguments, argument_size, entrypoint_name)?;
 
     // Get the output and print it
-    let mut output_data = beacon_get_output_data();
+    let output_data = beacon_get_output_data();
 
     // Store output data in a variable
     let output = if output_data.len() > 0 {
