@@ -136,11 +136,14 @@ fn main() -> Result<()> {
     // Execute the BOF
     // TODO: Arguments as Option<&[u8]>
     info!("Loading BOF: {}", args.bof_path.display());
-    Coffee::new(coff_buffer.as_slice())?.execute(
+    let result = Coffee::new(coff_buffer.as_slice())?.execute(
         Some(unhexilified.as_ptr()),
         Some(unhexilified.len()),
         args.entrypoint,
     )?;
+
+    //print the result
+    println!("{:?}", result);
 
     Ok(())
 }
